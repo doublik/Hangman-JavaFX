@@ -4,21 +4,22 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 
 public class HangmanGame extends Application {
 
     @Override
-    public void start(Stage title) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("./fxml/titleScreen.fxml"));
+    public void start(Stage window) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/TitleScreen.fxml"));
 
-        title.setTitle("HANGMAN");
-        title.setResizable(false);
-        title.centerOnScreen();
-        title.setScene(new Scene(root,326,200));
-        title.show();
+        window.setTitle("HANGMAN");
+        window.setResizable(false);
+        window.centerOnScreen();
+        window.setScene(new Scene(root, 326, 200));
+        window.show();
     }
+
 
     public static void main(String[] args) {
         launch(args);

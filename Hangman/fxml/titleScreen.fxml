@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="326.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Hangman.titleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Hangman.TitleController">
    <children>
       <ImageView fx:id="titleBg" fitHeight="200.0" fitWidth="326.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/titleScreen.png" />
          </image></ImageView>
-      <Button fx:id="easyMode" layoutX="99.0" layoutY="128.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="130.0" text="EASY">
+      <Button fx:id="practiceMode" layoutX="99.0" layoutY="128.0" mnemonicParsing="false" onAction="#pMode_Action" prefHeight="23.0" prefWidth="130.0" text="PRACTICE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="generalMode" layoutX="99.0" layoutY="161.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="130.0" text="GENERAL">
+      <Button fx:id="generalMode" layoutX="99.0" layoutY="161.0" mnemonicParsing="false" onAction="#gMode_Action" prefHeight="23.0" prefWidth="130.0" text="GENERAL">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
