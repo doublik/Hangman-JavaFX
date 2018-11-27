@@ -12,12 +12,12 @@
          <image>
             <Image url="@../img/titleScreen.png" />
          </image></ImageView>
-      <Button fx:id="practiceMode" layoutX="99.0" layoutY="128.0" mnemonicParsing="false" onAction="#pMode_Action" prefHeight="23.0" prefWidth="130.0" text="PRACTICE">
+      <Button fx:id="bGameStart" layoutX="99.0" layoutY="128.0" mnemonicParsing="false" onAction="#bGS_Action" prefHeight="23.0" prefWidth="130.0" text="GAME START">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="generalMode" layoutX="99.0" layoutY="161.0" mnemonicParsing="false" onAction="#gMode_Action" prefHeight="23.0" prefWidth="130.0" text="GENERAL">
+      <Button fx:id="bSetting" layoutX="99.0" layoutY="161.0" mnemonicParsing="false" onAction="#bS_Action" prefHeight="23.0" prefWidth="130.0" text="SETTING">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>

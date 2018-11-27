@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Hangman.PracticeModeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Hangman.GameController">
    <children>
       <AnchorPane fx:id="GamePane" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -32,11 +32,6 @@
             <Label fx:id="txtDelete" layoutY="570.0" prefHeight="30.0" prefWidth="309.0" style="-fx-background-color: BLACK;" text="while(true) { deleteThisPart(); }" textFill="ORANGE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font size="21.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="303.0" layoutY="76.0" prefHeight="87.0" prefWidth="496.0" text="___" wrapText="true">
-               <font>
-                  <Font size="70.0" />
                </font>
             </Label>
          </children>

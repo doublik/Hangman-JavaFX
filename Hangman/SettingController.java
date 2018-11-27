@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GeneralModeController implements Initializable {
+public class SettingController implements Initializable {
 
     @FXML private BorderPane background;
     @FXML private Label txtCount;
