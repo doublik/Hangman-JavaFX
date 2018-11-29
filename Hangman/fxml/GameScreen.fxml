@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Hangman.GameController">
+   <children>
+      <AnchorPane fx:id="GamePane" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <ImageView fx:id="background" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/bg3.png" />
+               </image>
+            </ImageView>
+            <ProgressBar fx:id="timeBar" prefHeight="20.0" prefWidth="800.0" progress="1.0" />
+            <ImageView fitHeight="20.0" fitWidth="303.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/stick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="human" fitHeight="332.0" fitWidth="291.0" layoutX="4.7" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/human.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="rope" layoutX="228.0" layoutY="56.0" prefHeight="20.0" prefWidth="4.0" style="-fx-background-color: #843c0c" />
+            <Label fx:id="txtDelete" layoutY="570.0" prefHeight="30.0" prefWidth="309.0" style="-fx-background-color: BLACK;" text="while(true) { deleteThisPart(); }" textFill="ORANGE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <BorderPane fx:id="CountDownPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: BLACK;" visible="false">
+         <center>
+            <Label fx:id="txtCount" text="COUNT DOWN" textFill="#ffbf00" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
