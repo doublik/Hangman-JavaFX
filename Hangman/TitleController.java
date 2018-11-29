@@ -31,8 +31,8 @@ public class TitleController implements Initializable {
     @FXML private PasswordField txtPW, txtConfirmPW;
     @FXML private Button bLogin, bJoin;
 
-    private static boolean isLogined = false;
-    private static String LoginedID;
+    public static boolean isLogined = false;
+    public static String LoginedID;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -114,9 +114,6 @@ public class TitleController implements Initializable {
                     throw new Exception("WrongPassword");
                 }
 
-                LoginedID = txtID.getText();
-                isLogined = true;
-
                 String readSetting = reader.readLine();
                 String[] parameters = readSetting.split("&");
                 for (int i=0; i<parameters.length; i++) {
@@ -139,13 +136,11 @@ public class TitleController implements Initializable {
                             GameController.isMan = false;
                     }
                 }
-                try {
-                    reader.close();
-                    paneLogin.setVisible(false);
-                    paneSelect.setVisible(true);
-                } catch (IOException e) {
-                    setErrMsg("문제가 발생하였습니다.");
-                }
+                reader.close();
+                LoginedID = txtID.getText();
+                isLogined = true;
+                paneLogin.setVisible(false);
+                paneSelect.setVisible(true);
             } catch (FileNotFoundException e) {
                 setErrMsg("아이디가 존재하지 않습니다.");
             } catch (IOException e) { // 파일 입출력 오류
@@ -184,13 +179,11 @@ public class TitleController implements Initializable {
                     BufferedWriter writer = new BufferedWriter(new FileWriter(path));
                     writer.write("$PW" + sha256(txtPW.getText()));
                     writer.newLine();
-                    writer.write("Background=1&HumanGender=man"); // save default value
-                    try {
-                        writer.close();
-                        txtConfirmPW.setVisible(false);
-                    } catch (IOException e) {
-                        setErrMsg("문제가 발생하였습니다.");
-                    }
+                    writer.write("Background=1&HumanGender=man"); // save default value]
+                    writer.close();
+                    txtConfirmPW.setVisible(false);
+                } catch (IOException e) {
+                    setErrMsg("문제가 발생하였습니다.");
                 } catch (Exception e) {
                     if (e.getMessage().equals("ExistID")) {
                         setErrMsg("이미 존재하는 아이디입니다.");
@@ -203,7 +196,6 @@ public class TitleController implements Initializable {
         } else {
             txtConfirmPW.setVisible(true);
         }
-        BufferedWriter writer = null;
     }
 
     // 로그인 에러 메세지 설정 후 보여주기.

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -14,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -99,5 +100,23 @@ public class SettingController implements Initializable {
     private void Apply_Action(ActionEvent event) throws IOException {
         GameController.bgNum = this.bgNum;
         GameController.isMan = this.isMan;
+        try {
+            String path = "./data/" + TitleController.LoginedID + ".db";
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            String temp_pw = reader.readLine();
+            reader.close();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            writer.write(temp_pw);
+            writer.newLine();
+            writer.write("Background=" + this.bgNum + "&HumanGender=" + (this.isMan ? "man" : "woman"));
+            writer.close();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ERROR");
+            alert.setHeaderText(null);
+            alert.setContentText("파일 입출력 오류 발생.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
