@@ -256,7 +256,7 @@ public class GameController implements Initializable {
 
         // 중복 방지
         for (int i=random; i<totalWords-1; i++) {
-            words[i] = words[i+1];
+            words[Difficulty-1][i] = words[Difficulty-1][i+1];
         }
         if (totalWords > 1) {
             totalWords--;
