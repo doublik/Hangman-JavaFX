@@ -127,6 +127,7 @@ public class TitleController implements Initializable {
                             }
                         } catch (Exception e) {
                             setErrMsg("설정값 오류");
+                            GameController.bgNum = 1; // set default
                         }
                     } else if (name.equals("HumanGender")) {
                         String value = parameters[i].split("=")[1];
@@ -134,6 +135,17 @@ public class TitleController implements Initializable {
                             GameController.isMan = true;
                         else if (value.equals("woman"))
                             GameController.isMan = false;
+                    } else if (name.equals("GameDifficulty")) {
+                        String value = parameters[i].split("=")[1];
+                        try {
+                            GameController.Difficulty = Integer.valueOf(value);
+                            if (GameController.Difficulty < 1 || GameController.Difficulty > 3) { // 잘못된 숫자 입력 방지
+                                GameController.Difficulty = 1;
+                            }
+                        } catch (Exception e) {
+                            setErrMsg("설정값 오류");
+                            GameController.Difficulty = 1; // set default
+                        }
                     }
                 }
                 reader.close();
@@ -196,6 +208,22 @@ public class TitleController implements Initializable {
         } else {
             txtConfirmPW.setVisible(true);
         }
+    }
+
+    // 로그아웃
+    @FXML
+    private void Do_Logout(ActionEvent event) throws IOException {
+        LoginedID = "";
+        isLogined = false;
+
+        // reset
+        txtID.setText("");
+        txtPW.setText("");
+        txtConfirmPW.setText("");
+        errMsg.setText("");
+
+        paneSelect.setVisible(false);
+        paneLogin.setVisible(true);
     }
 
     // 로그인 에러 메세지 설정 후 보여주기.

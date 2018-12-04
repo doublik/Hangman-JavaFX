@@ -41,14 +41,29 @@ public class GameController implements Initializable {
     // default value
     public static int bgNum = 1;
     public static boolean isMan = true;
+    public static int Difficulty = 1;
 
     private Timeline timeline;
     private final int tick = 3;
     private final int GameTime = 60000; // ms (60000 = 1 min)
     private int leftTick, leftTime;
-    private static String[] words = {"STUDENT","CHARACTER","MANTIS","ANIMAL","SMASHROOM","HANYANG","OHIKJUN","LEEJUNGIN","MAPLELEAF",
-    "ILOVEYOU","COMMUNITY","PROBLEM","DISCRETE","SUBMARINE"};
-    private static int totalWords = words.length;
+    private int wrongCount = 0;
+    private static String[][] words = {
+            {"mirror","evening","market","jungle","digital","insert","delete","program","english","museum",
+                    "vacation","basket","middle","guitar","captain","hundred","center","sheep","follow","window",
+                    "summer","winter","fresh","peace","repeat","potato","stupid","finger","hiking","island","capital",
+                    "holiday","attach","change","flame","survive","natural","labor","address","bottom","terrible",
+                    "special","nervous","biology","pretend","pretty"}, // EASY (DIFFICULTY = 1)
+            {"database","breakfast","memorize","expertise","available","criticize","submarine",
+                    "through","finance","vegetable","security","traveling","software","understand",
+                    "apartment","narrow","beautiful","pardon","excellent","yesterday","magazine","happiness",
+                    "symbol","persuade","stretch","distance","physical","attitude","average","decorate","harmony",
+                    "tendency","memorial","fatigue","reliance","surround"}, // MEDIUM (DIFFICULTY = 2)
+            {"trapezoid","Singapore","dictionary","instruction", "immigrant","appetite","technical",
+                    "merchant","listening","semantic","guarantee", "mankind","architect","withstand",
+                    "antipathy","flourish","digestion", "briefcase","microscope","proofread","carpenter"} // HARD (DIFFICULTY = 3)
+    };
+    private static int totalWords;
     private int random;
     private char[] answer;
     private char[] uranswer;
@@ -56,7 +71,7 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CountDownPane.setVisible(true);
-        timeBar.setStyle("-fx-accent: #ffae00");
+        timeBar.setStyle("-fx-accent: #ffae00"); // 색상
         startCountDown();
 
         // load setting
@@ -68,8 +83,9 @@ public class GameController implements Initializable {
         }
 
         // set word
+        totalWords = words[Difficulty-1].length;
         random = (int)Math.floor(Math.random()*totalWords);
-        String temp = words[random];
+        String temp = words[Difficulty-1][random].toUpperCase(); // 모두 대문자로
         answer = new char[temp.length()];
         uranswer = new char[temp.length()];
         labelAns = new Label[temp.length()];
@@ -154,8 +170,10 @@ public class GameController implements Initializable {
             return;
         }
         if (countCorrect == 0) {
-            leftTime -= 3000;
-            downRope(0.081 * 300);
+            // 틀릴때마다 가중치 붙어서 패널티. (0.5씩 늘어남)
+            leftTime -= 3000 + (wrongCount * 500);
+            downRope(0.081 * (300 + (wrongCount * 50)));
+            wrongCount++;
         }
     }
 
@@ -243,7 +261,7 @@ public class GameController implements Initializable {
         if (totalWords > 1) {
             totalWords--;
         } else { // ENDING
-            words[0] = "END";
+            words[Difficulty-1][0] = "END";
         }
 
         txtEndingMsg.setText("CORRECT!!");
